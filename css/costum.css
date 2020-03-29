@@ -1,0 +1,16 @@
+.judul-form{
+    background-color: orange !important;
+    border-radius: 20px;
+}
+.judul{
+    background-color: orange !important;
+}
+input[type='text'],input[type='password']{
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 0px;;
+}
+hr{
+    border: 2px solid purple;
+}
