@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reni Hotspot</title>
+    $(if refresh-timeout)
+    <meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+    $(endif)
+	<link rel="stylesheet" href="./css/app.css">
+	<link rel="stylesheet" href="./css/costum.css">
+	<script src="./js/app.js" async></script>
+    <script src='./js/modernizr-2.8.3.min.js'></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<script language="JavaScript">
+		<!--
+		$(if advert-pending == 'yes')
+			var popup = '';
+			function focusAdvert() {
+			if (window.focus) popup.focus();
+			}
+			function openAdvert() {
+			popup = open('$(link-advert)', 'hotspot_advert', '');
+			setTimeout("focusAdvert()", 1000);
+			}
+		$(endif)
+			function openLogout() {
+			if (window.name != 'hotspot_status') return true;
+				open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+			window.close();
+			return false;
+			}
+		//-->
+		</script>
+</head>
+
+<body>
+
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container pt-5">
+			<div class="row">
+				<div class="col-md-6 col-sm-12 mb-5">
+					<h1 class="display-5">Reni Hotspot</h1>
+					<p class="lead">Selalu cek status Anda, supaya terus terhubung dengan Internet</p>
+					<img src="./asset/bw.png" class="w-75">
+				</div>
+				<!-- LOGIN FORM -->
+				<div class="col-md-6 col-sm-12 text-white p-4 judul">
+					<div class="row text-center">
+                        <div class="col-4">
+                            <img src="./asset/id.png" class="img-fluid">
+                            <p>
+                                ID Voucher <br>
+                                $(username)
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <img src="./asset/ma.png" class="img-fluid">
+                            <p>
+                                Sisa Waktu <br>
+                                $(if session-time-left)
+                                    $(session-time-left)
+                                $(else)
+                                    Unlimited
+                                $(endif)
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <img src="./asset/time.png" class="img-fluid">
+                            <p>
+                                Online <br>
+                                $(uptime)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row text-center mt-4">
+                        <div class="col-4">
+                            <img src="./asset/download.png" class="img-fluid">
+                            <p>
+                                Download <br>
+                                $(bytes-out-nice)
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <img src="./asset/upload.png" class="img-fluid">
+                            <p>
+                                Upload <br>
+                                $(bytes-in-nice)
+                            </p>
+                        </div>
+                        <div class="col-4">
+                            <img src="./asset/kuota.png" class="img-fluid">
+                            <p>
+                                Sisa Kuota <br>
+								$(if remain-bytes-total)
+									$(remain-bytes-total-nice)
+								$(else)
+									Unlimited
+								$(endif)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+                                <input type="hidden" name="erase-cookie" value="on">
+                                $(if login-by-mac != 'yes')
+                               		<button type="submit" class="btn tombol-49 merah"><span class="fas fa-sign-out-alt"></span>LOGOUT</button>
+                                $(endif)
+                              </form>
+                        </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 text-center p-5">
+				<h3 class="display-5">Daftar Harga</h3>
+				<p>Paket internet yang cocok untuk dompet</p>
+			</div>
+		</div>
+		<div class="row text-center">
+			<div class="col-md-12 col-sm-12">
+				<div class="row">
+					<div class="col-md-4 text-center">
+						<div class="wrapper mx-5 shadow p-5">
+							<h3 class="display-5">PAKET HEMAT</h3>
+							<hr>
+							<img src="./asset/pricing-table-icon-1.png"  class="img-fluid">
+							<h3 class="display-5 mt-4 "><b>Rp 2.000,-</b></h3>
+							<div class="daftar pt-4">
+								<div class="my-2">500Mb Kuota</div>
+								<div class="my-2">No Limit Time</div>
+								<div class="my-2">2Mb Speed</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 text-center  ">
+						<div class="wrapper mx-5 shadow p-5" >
+							<h3 class="display-5 ">PAKET MEDIUM</h3>
+							<hr>
+							<img src="./asset/pricing-table-icon-2.png"  class="img-fluid">
+							<h3 class="display-5 mt-4 "><b>Rp 5.000,-</b></h3>
+							<div class="daftar pt-4">
+								<div class="my-2">1Gb Kuota</div>
+								<div class="my-2">No Limit Time</div>
+								<div class="my-2">2Mb Speed</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 text-center ">
+						<div class="wrapper mx-5 shadow p-5">
+							<h3 class="display-5">PAKET UNLIMITED</h3>
+							<hr>
+							<img src="./asset/pricing-table-icon-3.png"  class="img-fluid">
+							<h3 class="display-5 mt-4 "><b>Rp 5.000,-</b></h3>
+							<div class="daftar pt-4">
+								<div class="my-2">Unlimited Kuota</div>
+								<div class="my-2">1 Day Limit</div>
+								<div class="my-2">2Mb Speed</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	$(if chap-id)
+	<script type="text/javascript" src="./js/md5.js"></script>
+	<script src="./js/main.js"></script>
+	<script src="./js/map.js"></script>
+	<script src="./js/vendor.js.js"></script>
+	<script type="text/javascript">
+		$('#loginForm').submit(function () {
+			var password = $('#inputPassword');
+			password.val(hexMD5('$(chap-id)' + password.val() + '$(chap-challenge)'));
+		});
+	</script>
+	$(endif)
+	<script>
+	  $("#menu-toggle").click(function (e) {
+		  e.preventDefault();
+	  $("#wrapper").toggleClass("toggled");
+	  });
+	</script>
+	<script type="text/javascript">
+	  document.login.username.focus();
+	</script>
+
+</body>
+</html>
